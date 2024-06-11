@@ -1,0 +1,13 @@
+services:
+  apache:
+    container_name: apache
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/html
+      - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
+    ports:
+      - "80:80"
+    environment:
+      - "ALLOW_OVERIDE=true"
