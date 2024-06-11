@@ -1,3 +1,11 @@
+installation
+========
+
+1. docker-compose up
+2. dans un terminal faire : "make connect" ou si vous n'avez pas makefile : "docker exec -it apache sh"
+3. composer i
+
+
 test-dev
 ========
 

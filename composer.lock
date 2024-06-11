@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d989ccec7ac235fc6661d34e6ab86e6a",
+    "content-hash": "1d819139238dd26efd04ed535e2013e7",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -3346,16 +3346,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.10.0",
+            "version": "v1.21.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "e38520236bdc911c2f219634b485bc328746e980"
+                "reference": "06b58a5e5b4c6528fb12e0fac5fea0db3f1e7ae8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/e38520236bdc911c2f219634b485bc328746e980",
-                "reference": "e38520236bdc911c2f219634b485bc328746e980",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/06b58a5e5b4c6528fb12e0fac5fea0db3f1e7ae8",
+                "reference": "06b58a5e5b4c6528fb12e0fac5fea0db3f1e7ae8",
                 "shasum": ""
             },
             "require": {
@@ -3364,15 +3364,13 @@
             },
             "require-dev": {
                 "composer/composer": "^1.0.2|^2.0",
-                "symfony/dotenv": "^4.4|^5.0",
-                "symfony/phpunit-bridge": "^4.4|^5.0",
-                "symfony/process": "^3.4|^4.4|^5.0"
+                "symfony/dotenv": "^4.4|^5.0|^6.0",
+                "symfony/filesystem": "^4.4|^5.0|^6.0",
+                "symfony/phpunit-bridge": "^4.4.12|^5.0|^6.0",
+                "symfony/process": "^4.4|^5.0|^6.0"
             },
             "type": "composer-plugin",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.9-dev"
-                },
                 "class": "Symfony\\Flex\\Flex"
             },
             "autoload": {
@@ -3391,6 +3389,10 @@
                 }
             ],
             "description": "Composer plugin for Symfony",
+            "support": {
+                "issues": "https://github.com/symfony/flex/issues",
+                "source": "https://github.com/symfony/flex/tree/v1.21.6"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3405,7 +3407,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-05T10:56:45+00:00"
+            "time": "2024-03-02T08:16:37+00:00"
         },
         {
             "name": "symfony/form",
@@ -8025,5 +8027,5 @@
         "ext-simplexml": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.6.0"
 }
