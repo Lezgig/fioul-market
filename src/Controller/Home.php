@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Services\APIConsumer\NewsApi\NewsApiService;
+use App\Services\APIConsumer\CommitStripApi\CommitStripApiService;
 
 class Home extends AbstractController
 {
@@ -19,8 +21,9 @@ class Home extends AbstractController
     {
         $I=0;
         $ls = array();
-        //recupere liens flux rss avec images
-        try {
+            $commitStripApi = new CommitStripApiService('http://www.commitstrip.com/en/feed/');
+            $commitStripResponse = $commitStripApi->getResponse();
+            dd(simplexml_load_string($commitStripResponse, 'SimpleXMLElement', LIBXML_NOCDATA));
             $c = curl_init();
             curl_setopt_array($c, Array(CURLOPT_URL => 'http://www.commitstrip.com/en/feed/',CURLOPT_RETURNTRANSFER => TRUE,));
             $d = curl_exec($c);curl_close($c);
@@ -36,15 +39,19 @@ class Home extends AbstractController
                 if(!!substr_count((string)$c->item[$I]->children("content", true), 'PNG')<0){${"ls"}[$I] = "";}
                 if(!!substr_count((string)$c->item[$I]->children("content", true), '.png')<0){${"ls"}[$I] = "";}
             }
-        } catch (\Exception $e) {
-            // do nothing
-        }
 
         //recpere liens api json avec image
         $j="";
-        $h = @fopen("https://newsapi.org/v2/top-headlines?country=us&apiKey=c782db1cd730403f88a544b75dc2d7a0", "r");
-        while ($b = fgets($h, 4096)) {$j.=$b;}
-        $j=json_decode($j);
+        // $h = @fopen("https://newsapi.org/v2/top-headlines?country=us&apiKey=c782db1cd730403f88a544b75dc2d7a0", "r");
+        // while ($b = fgets($h, 4096)) {$j.=$b;}
+
+        $url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=c782db1cd730403f88a544b75dc2d7a0";
+
+        $api = new NewsApiService($url);
+        dump($api->getJsonResponse());
+        die();
+
+        $j=json_decode($response);
         for($II=$I+1; $II<count($j->articles);$II++){
             if($j->articles[$II]->urlToImage=="" || empty($j->articles[$II]->urlToImage) || strlen($j->articles[$II]->urlToImage)==0){continue;}
             $h=$j->articles[$II]->url;
