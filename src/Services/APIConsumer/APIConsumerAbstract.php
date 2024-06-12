@@ -2,10 +2,12 @@
 
 namespace App\Services\APIConsumer;
 
-abstract class APIConsumerAbstract {
+use App\Services\AbstractConsumer;
 
-    protected $url;
-    protected $response;
+abstract class APIConsumerAbstract extends AbstractConsumer{
+
+    protected string $url;
+    protected string $response;
     protected $jsonResponse;
 
     public function __construct(string $url) {
@@ -16,11 +18,4 @@ abstract class APIConsumerAbstract {
         return $this->response;
     }
 
-    public function getJsonResponse() {
-        try {
-            return json_decode($this->response);
-        }catch (\Exception $e) {
-            return $e->getMessage();
-        }
-    }
 }

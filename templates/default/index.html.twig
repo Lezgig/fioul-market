@@ -6,7 +6,14 @@
     <div class="gallery cf">
         {% for image in images %}
             <div>
-                <img src="{{ image }}" title="{{ image }}"/>
+                <img src={{ image[1] }} />
+                <div class="overbox">
+                    <h2>Titre de l'article</h2>
+                    <a href={{ image[0] }}>
+                        <button>Lire l'article</button>
+                    <a>
+                </div>
+            
             </div>
         {% endfor %}
     </div>
