@@ -7,3 +7,6 @@ start:
 rebuild:
 	docker-compose down
 	docker-compose up -d --build
+
+test:
+	bin/phpunit tests/ConsumerTest.php

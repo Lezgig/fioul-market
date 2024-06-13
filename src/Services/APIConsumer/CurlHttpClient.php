@@ -8,6 +8,18 @@ class CurlHttpClient implements HttpClientInterface {
 
     private const USER_AGENT = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0";
 
+    public function handleResponse($response, $curlInfo)
+    {        
+        switch ($curlInfo['http_code']) {
+            case 200:
+                return true;
+            break;
+            default:
+                return false;
+        }
+
+    }
+
     public function get(string $url): string
     {
         $ch = curl_init();
@@ -16,13 +28,14 @@ class CurlHttpClient implements HttpClientInterface {
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
-        curl_close($ch);
-
-        if ($response === false) {
-            throw new \Exception("Erreur cURL : " . curl_error($ch));
+        $curlInfo = curl_getinfo($ch);
+        if(!$this->handleResponse($response, $curlInfo)){
+            throw new \Exception("Erreur cURL : " . $curlInfo['http_code']);
+        }else{
+            return $response;
         }
-
-        return $response;
+        
+       
     }
 
     public function post(string $url, array $data): string

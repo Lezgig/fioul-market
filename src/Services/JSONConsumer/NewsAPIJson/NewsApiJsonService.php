@@ -23,6 +23,7 @@ class NewsApiJsonService extends AbstractConsumer
     }
 
     public function getLinks(){
+
         $json = self::consume($this->response);
         
         $links = [];
@@ -53,9 +54,9 @@ class NewsApiJsonService extends AbstractConsumer
             if(in_array((string)$item->url, $articlesLinks)){
                 continue;
             }
-            
-            $links[] = (string)$item->url;
+            $links[] = array((string)$item->url, (string)$item->title);
         }
+        
         return $links;
     }
 }
