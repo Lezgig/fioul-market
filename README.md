@@ -22,10 +22,23 @@ Pratique :
 
 Questions théoriques : 
 1. Que mettriez-vous en place afin d'améliorer les temps de réponses du script
-    -> réponse : j'y ai ajouté un système de cache peu élaboré qui permet de diminuer le temps de réponse.
-2. Comment aborderiez-vous le fait de rendre scalable le script (plusieurs milliers de sources et images)
-    -> réponse : on peut plancher sur plusieurs solutions (certaines sont excluantes): 
-        - une architecture micro-service avec un une api-gateway + load balancer pour répartir la charge
+<br /> -> réponse : j'y ai ajouté un système de cache peu élaboré qui permet de diminuer le temps de réponse. 
+    
+3. Comment aborderiez-vous le fait de rendre scalable le script (plusieurs milliers de sources et images)$
+<br /> -> réponse : on peut plancher sur plusieurs solutions (certaines sont excluantes): 
+<ul>
+    <li>
+         - une architecture micro-service avec un une api-gateway + load balancer pour répartir la charge
+    </li>
+    <li>
         - servir des résultats déjà en cache et utiliser un système de file d'attente pour gérer de manière asynchrone les tâches visant à actualiser le cache coté backend
+    </li>
+    <li>
         - optimisation des requêtes (compression...)
+    </li>
+    <li>
         - utilisation d'un flux en streaming (kafka) pour consommer les données en temps réel
+    </li>
+</ul>
+   
+       
