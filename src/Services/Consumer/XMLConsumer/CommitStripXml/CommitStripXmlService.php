@@ -15,6 +15,10 @@ class CommitStripXmlService extends AbstractConsumer
         $this->consume($file);
     }
     
+    /**
+     * Consume the API
+     * @return mixed the response
+     */
     private function consume($file)
     {
         try{
@@ -24,6 +28,10 @@ class CommitStripXmlService extends AbstractConsumer
         }
     }
 
+    /**
+     * Get the links from the API
+     * @return array the links
+     */
     public function getLinks(){
         $xml = self::consume($this->file);
         $sanitisedLinks = [];

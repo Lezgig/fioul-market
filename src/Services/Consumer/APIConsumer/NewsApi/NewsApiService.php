@@ -17,6 +17,10 @@ class NewsApiService extends APIConsumerAbstract{
         $this->consume();
     }
 
+    /**
+     * Get the articles from the API
+     * @return array the articles
+     */
     public static function scrawlToImages(array $urls){
 
         $links = [];

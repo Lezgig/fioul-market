@@ -14,6 +14,10 @@ abstract class APIConsumerAbstract extends AbstractConsumer{
         $this->url = $url;
     }
 
+    /**
+     * Get the articles from the API
+     * @return array the articles
+     */
     public function getResponse() {
         return $this->response;
     }
