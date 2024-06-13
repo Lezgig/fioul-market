@@ -8,8 +8,6 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Contracts\Cache\ItemInterface;
 use App\Services\ArticlesService\ArticlesService;
 use Symfony\Component\Routing\Annotation\Route;
-use Psr\Log\LoggerInterface;
-use App\Services\Test;
 
 class HomeController extends AbstractController
 {

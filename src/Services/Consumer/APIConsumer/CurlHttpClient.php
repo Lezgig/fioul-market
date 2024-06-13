@@ -17,7 +17,7 @@ class CurlHttpClient implements HttpClientInterface {
     public function handleResponse($response, $curlInfo)
     {        
         switch ($curlInfo['http_code']) {
-            case 2002:
+            case 200:
                 return true;
             break;
             default:
