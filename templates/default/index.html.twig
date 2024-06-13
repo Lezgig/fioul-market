@@ -4,14 +4,14 @@
     <h1>Fioulmarket - Test</h1>
 
     <div class="gallery cf">
-        {% for image in images %}
+        {% for article in articles %}
             <div>
-                <img src={{ image[1] }} />
+                <img src={{ article[1] }} />
                 <div class="overbox">
-                    <h2>Titre de l'article</h2>
-                    <a href={{ image[0] }}>
-                        <button>Lire l'article</button>
-                    <a>
+                    <h2>{{ article[2] }}</h2>
+                    <a href={{ article[0] }}>
+                        <button class="btn  btn-primary">Lire l'article</button>
+                    </a>
                 </div>
             
             </div>

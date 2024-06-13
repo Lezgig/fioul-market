@@ -51,8 +51,7 @@ class CommitStripXmlService extends AbstractConsumer
             if(in_array((string)$item->link, $articlesLinks)){
                 continue;
             }
-            
-            $links[] = (string)$item->link;
+            $links[] = array((string)$item->link, (string)$item->title);
         }
         return $links;
     }

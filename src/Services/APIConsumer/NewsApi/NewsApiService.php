@@ -24,7 +24,7 @@ class NewsApiService extends APIConsumerAbstract{
         foreach($urls as $url){
             try{
                 $doc = new \DomDocument();
-                @$doc->loadHTMLFile($url);
+                @$doc->loadHTMLFile($url[0]);
                 $xpath = new \DomXpath($doc);
                 $image = $xpath->query('//img/@src');
                 if($image->length == 0){
@@ -37,7 +37,7 @@ class NewsApiService extends APIConsumerAbstract{
                     continue;
                 }
                 
-                array_push($links,array($url, parent::sanitiseUrl($src)));
+                array_push($links,array($url[0], parent::sanitiseUrl($src), $url[1]));
                 $i++;
             }catch(Exception $e){
                 

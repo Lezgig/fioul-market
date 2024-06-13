@@ -16,13 +16,13 @@ class CommitStripApiService extends APIConsumerAbstract
     }
 
     public static function scrawlToImage(array $urls){
-
+        
         $links = [];
         $i=0;
         foreach($urls as $url){
             try{
                 $doc = new \DomDocument();
-                @$doc->loadHTMLFile($url);
+                @$doc->loadHTMLFile($url[0]);
                 $xpath = new \DomXpath($doc);
                 $image = $xpath->query('//img[contains(@class,"size-full")]/@src');
                 if($image->length == 0){
@@ -34,7 +34,7 @@ class CommitStripApiService extends APIConsumerAbstract
                     continue;
                 }
         
-                array_push($links,array($url, parent::sanitiseUrl($src)));
+                array_push($links,array($url[0], parent::sanitiseUrl($src), $url[1]));
                 $i++;
 
             }catch(Exception $e){
