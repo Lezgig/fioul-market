@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\XMLConsumer\CommitStripXml;
+namespace App\Services\Consumer\XMLConsumer\CommitStripXml;
 
 use SimpleXMLElement;
-use App\Services\AbstractConsumer;
+use App\Services\Consumer\AbstractConsumer;
 
 class CommitStripXmlService extends AbstractConsumer
 {

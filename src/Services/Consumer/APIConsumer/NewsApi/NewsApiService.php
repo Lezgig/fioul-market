@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\APIConsumer\NewsApi;
+namespace App\Services\Consumer\APIConsumer\NewsApi;
 
-use App\Services\APIConsumer\APIConsumerAbstract;
-use App\Services\APIConsumer\APIConsumerInterface;
-use App\Services\APIConsumer\CurlHttpClient;
-use App\Services\JSONConsumer\NewsAPIJson\NewsApiJsonService;
+use App\Services\Consumer\APIConsumer\APIConsumerAbstract;
+use App\Services\Consumer\APIConsumer\APIConsumerInterface;
+use App\Services\Consumer\APIConsumer\CurlHttpClient;
+use App\Services\Consumer\JSONConsumer\NewsAPIJson\NewsApiJsonService;
 
 class NewsApiService extends APIConsumerAbstract{
 

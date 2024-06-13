@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\APIConsumer;
+namespace App\Services\Consumer\APIConsumer;
 
-use App\Services\AbstractConsumer;
+use App\Services\Consumer\AbstractConsumer;
 
 abstract class APIConsumerAbstract extends AbstractConsumer{
 

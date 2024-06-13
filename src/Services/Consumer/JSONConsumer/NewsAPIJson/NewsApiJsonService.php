@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\JSONConsumer\NewsAPIJson;
+namespace App\Services\Consumer\JSONConsumer\NewsAPIJson;
 
-use App\Services\AbstractConsumer;
+use App\Services\Consumer\AbstractConsumer;
 
 class NewsApiJsonService extends AbstractConsumer
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\APIConsumer;
+namespace App\Services\Consumer\APIConsumer;
 
-use App\Services\APIConsumer\HttpClientInterface;
+use App\Services\Consumer\APIConsumer\HttpClientInterface;
 
 class CurlHttpClient implements HttpClientInterface {
 
