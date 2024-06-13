@@ -3,11 +3,17 @@
 namespace App\Services\Consumer\APIConsumer;
 
 use App\Services\Consumer\APIConsumer\HttpClientInterface;
+use Psr\Log\LoggerInterface;
 
 class CurlHttpClient implements HttpClientInterface {
 
     private const USER_AGENT = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0";
 
+    /**
+     * @param string $response la réponse de la requête
+     * @param array $curlInfo les informations de la requête
+     * @return bool true si la réponse est correcte, false sinon
+     */
     public function handleResponse($response, $curlInfo)
     {        
         switch ($curlInfo['http_code']) {
@@ -20,6 +26,11 @@ class CurlHttpClient implements HttpClientInterface {
 
     }
 
+    /**
+     * @param string $url l'url de la requête
+     * @return string le contenu de la réponse
+     * @throws \Exception si la requête échoue
+     */
     public function get(string $url): string
     {
         $ch = curl_init();

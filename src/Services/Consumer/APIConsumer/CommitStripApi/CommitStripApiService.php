@@ -15,6 +15,10 @@ class CommitStripApiService extends APIConsumerAbstract
         $this->consume();
     }
 
+    /**
+     * Get the articles from the API
+     * @return array the articles
+     */
     public static function scrawlToImage(array $urls){
         
         $links = [];
@@ -45,6 +49,10 @@ class CommitStripApiService extends APIConsumerAbstract
         return $links;
     }
 
+    /**
+     * Get the articles from the API
+     * @return array the articles
+     */
     private function consume()
     {
         $client = new CurlHttpClient();

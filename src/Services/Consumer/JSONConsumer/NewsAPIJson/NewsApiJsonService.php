@@ -13,6 +13,10 @@ class NewsApiJsonService extends AbstractConsumer
         $this->response = $response;
     }
     
+    /**
+     * Consume the API
+     * @return mixed the response
+     */
     private function consume($response)
     {
         try {
@@ -22,6 +26,10 @@ class NewsApiJsonService extends AbstractConsumer
         }
     }
 
+    /**
+     * Get the links from the API
+     * @return array the links
+     */
     public function getLinks(){
 
         $json = self::consume($this->response);
