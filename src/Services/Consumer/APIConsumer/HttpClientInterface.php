@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\APIConsumer;
+namespace App\Services\Consumer\APIConsumer;
 
 interface HttpClientInterface
 {

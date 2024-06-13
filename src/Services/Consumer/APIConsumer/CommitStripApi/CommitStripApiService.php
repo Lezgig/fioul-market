@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\APIConsumer\CommitStripApi;
+namespace App\Services\Consumer\APIConsumer\CommitStripApi;
 
-use App\Services\APIConsumer\APIConsumerAbstract;
-use App\Services\APIConsumer\CurlHttpClient;
+use App\Services\Consumer\APIConsumer\APIConsumerAbstract;
+use App\Services\Consumer\APIConsumer\CurlHttpClient;
 
 class CommitStripApiService extends APIConsumerAbstract
 {

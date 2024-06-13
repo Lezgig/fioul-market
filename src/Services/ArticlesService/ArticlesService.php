@@ -2,6 +2,13 @@
 
 namespace App\Services\ArticlesService;
 
+use App\Services\Consumer\APIConsumer\CommitStripApi\CommitStripApiService;
+use App\Services\Consumer\APIConsumer\NewsApi\NewsApiService;
+use App\Services\Consumer\JSONConsumer\NewsAPIJson\NewsApiJsonService;
+use App\Services\Consumer\XMLConsumer\CommitStripXml\CommitStripXmlService;
+
+
+
 class ArticlesService {
     
     public static function getArticles(){

@@ -2,15 +2,11 @@
 
 namespace App\Tests;
 
-use Http\Mock\Client;
+
+use App\Services\Consumer\NewsAPIJson\NewsApiJsonService;
+use App\Services\ArticlesService\ArticlesService;
 use PHPUnit\Framework\TestCase;
-use App\Services\APIConsumer\CommitStripApi\CommitStripApiService;
-use App\Services\APIConsumer\NewsApi\NewsApiService;
-use App\Services\JSONConsumer\NewsAPIJson\NewsApiJsonService;
-use App\Services\APIConsumer\CurlHttpClient;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpClient\MockHttpClient;
+use App\Services\Consumer\APIConsumer\CurlHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
 class ConsumerTest extends TestCase
@@ -43,8 +39,16 @@ class ConsumerTest extends TestCase
         $this->assertEquals($curlHttpClient->handleResponse($response, $curlInfo ), true);
     }
 
-    
-
+    /**
+     * Given I have an ArticlesService
+     * When I call the getArticles method
+     * Then I should get an array of articles
+     */
+    public function testGetArticles()
+    {
+        $articles = ArticlesService::getArticles();
+        $this->assertIsArray($articles);
+    }
     
 
 }
