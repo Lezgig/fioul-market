@@ -21,10 +21,6 @@ class HomeController extends AbstractController
     {
         $cache = new FilesystemAdapter();
 
-        if(true){
-            $cache->delete(self::CACHE_KEY);
-        }
-
         // Get articles from cache or from the service if data are not found in cache
         $cachedArticles = $cache->get(self::CACHE_KEY, function (ItemInterface $item){
             $item->expiresAfter(3600);
