@@ -6,11 +6,11 @@
     <div class="gallery cf">
         {% for article in articles %}
             <div>
-                <img src={{ article[1] }} />
+                <img width="500" height="400" src={{ article[1] }} />
                 <div class="overbox">
                     <h2>{{ article[2] }}</h2>
                     <a href={{ article[0] }}>
-                        <button class="btn  btn-primary">Lire l'article</button>
+                        <button class="btn btn-primary">Lire l'article</button>
                     </a>
                 </div>
             
