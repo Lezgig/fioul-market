@@ -4,22 +4,24 @@ namespace App\Services\Consumer\APIConsumer\CommitStripApi;
 
 use App\Services\Consumer\APIConsumer\APIConsumerAbstract;
 use App\Services\Consumer\APIConsumer\CurlHttpClient;
+use App\Services\Consumer\APIConsumer\APIConsumerInterface;
+use Exception;
 
-class CommitStripApiService extends APIConsumerAbstract
+class CommitStripApiService extends APIConsumerAbstract implements APIConsumerInterface
 {
     private const BASE_URL = "http://www.commitstrip.com/en/feed/";
 
-    public function __construct($url = self::BASE_URL)
+    public function __construct()
     {
-        $this->url = $url;
-        $this->consume();
+
     }
 
     /**
      * Get the articles from the API
      * @return array the articles
      */
-    public static function scrawlToImage(array $urls){
+    public function scrawlToImages(array $urls): array
+    {
         
         $links = [];
         $i=0;
@@ -47,15 +49,5 @@ class CommitStripApiService extends APIConsumerAbstract
         }
         
         return $links;
-    }
-
-    /**
-     * Get the articles from the API
-     * @return array the articles
-     */
-    private function consume()
-    {
-        $client = new CurlHttpClient();
-        $this->response = $client->get($this->url);
     }
 }
