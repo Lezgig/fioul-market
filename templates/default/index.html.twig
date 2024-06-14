@@ -2,7 +2,11 @@
 
 {% block body %}
     <h1>Fioulmarket - Test</h1>
-
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-light" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
     <div class="gallery cf">
         {% for article in articles %}
             <div>

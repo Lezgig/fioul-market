@@ -9,8 +9,6 @@ use Exception;
 
 class CommitStripApiService extends APIConsumerAbstract implements APIConsumerInterface
 {
-    private const BASE_URL = "http://www.commitstrip.com/en/feed/";
-
     public function __construct()
     {
 
@@ -44,7 +42,7 @@ class CommitStripApiService extends APIConsumerAbstract implements APIConsumerIn
                 $i++;
 
             }catch(Exception $e){
-                
+                throw new Exception('Error while scrapping the images from the commit strip API');
             }
         }
         

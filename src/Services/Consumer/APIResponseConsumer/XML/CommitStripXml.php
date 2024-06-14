@@ -11,7 +11,6 @@ class CommitStripXml extends AbstractConsumer implements ApiResponseConsumerInte
 
     public function __construct()
     {
-
     }
 
     /**

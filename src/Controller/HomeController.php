@@ -27,7 +27,9 @@ class HomeController extends AbstractController
             // Get articles from the service
             return $articlesService->getArticles();
         });
-        
+
+        empty($cachedArticles) ? $this->addFlash('error', 'No articles found try again later') : null;
+
         return $this->render('default/index.html.twig',[
             'articles' => $cachedArticles
             ]
