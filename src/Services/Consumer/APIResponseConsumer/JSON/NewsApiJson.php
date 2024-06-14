@@ -10,7 +10,6 @@ class NewsApiJson extends AbstractConsumer implements ApiResponseConsumerInterfa
 
     public function __construct()
     {
-        
     }
 
     /**

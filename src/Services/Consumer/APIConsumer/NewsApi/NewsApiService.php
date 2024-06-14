@@ -11,8 +11,6 @@ use Exception;
 class NewsApiService extends APIConsumerAbstract implements APIConsumerInterface
 {
 
-    private const BASE_URL = "https://newsapi.org/v2";
-
     public function __construct()
     {   
     }
@@ -45,7 +43,7 @@ class NewsApiService extends APIConsumerAbstract implements APIConsumerInterface
                 array_push($links,array($url[0], parent::sanitiseUrl($src), $url[1]));
                 $i++;
             }catch(Exception $e){
-                
+                throw new Exception('Error while scrapping the images from the news API');
             }
         }   
         return $links;   
