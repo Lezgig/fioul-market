@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Contracts\Cache\ItemInterface;
-use App\Services\ArticlesService\ArticlesService;
+use App\Services\Articles\ArticlesService;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -17,15 +17,15 @@ class HomeController extends AbstractController
      * Homepage
      * @Route("/", name="homepage")
      */
-    public function homepage(): Response
+    public function homepage(ArticlesService $articlesService): Response
     {
         $cache = new FilesystemAdapter();
-
+        
         // Get articles from cache or from the service if data are not found in cache
-        $cachedArticles = $cache->get(self::CACHE_KEY, function (ItemInterface $item){
+        $cachedArticles = $cache->get(self::CACHE_KEY, function (ItemInterface $item) use ($articlesService){
             $item->expiresAfter(3600);
             // Get articles from the service
-            return ArticlesService::getArticles();
+            return $articlesService->getArticles();
         });
         
         return $this->render('default/index.html.twig',[

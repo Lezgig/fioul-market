@@ -6,22 +6,23 @@ use App\Services\Consumer\APIConsumer\APIConsumerAbstract;
 use App\Services\Consumer\APIConsumer\APIConsumerInterface;
 use App\Services\Consumer\APIConsumer\CurlHttpClient;
 use App\Services\Consumer\JSONConsumer\NewsAPIJson\NewsApiJsonService;
+use Exception;
 
-class NewsApiService extends APIConsumerAbstract{
+class NewsApiService extends APIConsumerAbstract implements APIConsumerInterface
+{
 
     private const BASE_URL = "https://newsapi.org/v2";
 
-    public function __construct($url = self::BASE_URL)
+    public function __construct()
     {   
-        $this->url = $url;
-        $this->consume();
     }
 
     /**
      * Get the articles from the API
      * @return array the articles
      */
-    public static function scrawlToImages(array $urls){
+    public function scrawlToImages(array $urls): array
+    {
 
         $links = [];
         $i=0;
@@ -50,9 +51,4 @@ class NewsApiService extends APIConsumerAbstract{
         return $links;   
     }
 
-    private function consume()
-    {
-        $client = new CurlHttpClient();
-        $this->response = $client->get($this->url);
-    }
 }

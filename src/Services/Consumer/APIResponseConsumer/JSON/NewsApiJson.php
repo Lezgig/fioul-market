@@ -1,38 +1,25 @@
 <?php
 
-namespace App\Services\Consumer\JSONConsumer\NewsAPIJson;
+namespace App\Services\Consumer\APIResponseConsumer\JSON;
 
 use App\Services\Consumer\AbstractConsumer;
+use App\Services\Consumer\APIResponseConsumer\ApiResponseConsumerInterface;
 
-class NewsApiJsonService extends AbstractConsumer
+class NewsApiJson extends AbstractConsumer implements ApiResponseConsumerInterface
 {
-    private $response;
 
-    public function __construct($response)
+    public function __construct()
     {
-        $this->response = $response;
-    }
-    
-    /**
-     * Consume the API
-     * @return mixed the response
-     */
-    private function consume($response)
-    {
-        try {
-            return json_decode($response);
-        }catch (\Exception $e) {
-            return $e->getMessage();
-        }
+        
     }
 
     /**
      * Get the links from the API
      * @return array the links
      */
-    public function getLinks(){
+    public function extractLinks($json){
 
-        $json = self::consume($this->response);
+        $json = json_decode($json);
         
         $links = [];
         $articlesLinks = [];

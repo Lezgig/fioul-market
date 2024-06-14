@@ -1,40 +1,27 @@
 <?php
 
-namespace App\Services\Consumer\XMLConsumer\CommitStripXml;
+namespace App\Services\Consumer\APIResponseConsumer\XML;
 
 use SimpleXMLElement;
 use App\Services\Consumer\AbstractConsumer;
+use App\Services\Consumer\APIResponseConsumer\ApiResponseConsumerInterface;
 
-class CommitStripXmlService extends AbstractConsumer
+class CommitStripXml extends AbstractConsumer implements ApiResponseConsumerInterface
 {
-    private string $file;
 
-    public function __construct($file)
+    public function __construct()
     {
-        $this->file = $file;
-        $this->consume($file);
-    }
-    
-    /**
-     * Consume the API
-     * @return mixed the response
-     */
-    private function consume($file)
-    {
-        try{
-            return simplexml_load_string($file, 'SimpleXMLElement', LIBXML_NOCDATA);
-        }catch (\Exception $e) {
-            return $e->getMessage();
-        }
+
     }
 
     /**
      * Get the links from the API
      * @return array the links
      */
-    public function getLinks(){
-        $xml = self::consume($this->file);
-        $sanitisedLinks = [];
+    public function extractLinks($xml): array
+    {
+
+        $xml = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
 
         $articlesLinks = [];
         $articlesImages = [];
